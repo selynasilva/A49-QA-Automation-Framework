@@ -7,11 +7,7 @@ public class ProfileTests extends BaseTest {
     @Test
     public void changeProfileName() throws InterruptedException {
 
-        navigateToPage();
-
-        provideEmail("demo@class.com");
-        providePassword("te$t$tudent");
-        clickSubmit();
+        loginWithCorrectCreds();
 
         Thread.sleep(2000);
         clickAvatarIcon();
