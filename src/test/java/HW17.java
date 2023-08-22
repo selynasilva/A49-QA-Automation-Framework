@@ -22,7 +22,7 @@ public class HW17 extends BaseTest {
     }
 
     private void enterNewUniquePlaylistName() {
-        enterText(By.cssSelector("#songResultsWrapper [data-test='new-playlist-name']"), getRandomString());
+        enterText(By.cssSelector("#songResultsWrapper [data-test='new-playlist-name']"), generateRandomName());
         WebElement submitBtn =  driver.findElement(By.cssSelector("#songResultsWrapper [type='submit']"));
         submitBtn.click();
     }

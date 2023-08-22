@@ -81,18 +81,13 @@ public class BaseTest {
         profileName.sendKeys(randomName);
     }
 
-    public String generateRandomName() {
-        return UUID.randomUUID().toString().replace("-", "");
-    }
-
     public void isAvatarDisplayed() {
         WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
 
-    String getRandomString() {
-        UUID uuid = UUID.randomUUID();
-        return uuid.toString();
+    public String generateRandomName() {
+        return UUID.randomUUID().toString().replace("-", "");
     }
 
     protected void loginWithCorrectCreds() {
