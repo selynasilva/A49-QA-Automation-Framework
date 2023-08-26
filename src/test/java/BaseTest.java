@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -16,6 +18,7 @@ public class BaseTest {
     public WebDriver driver = null;
 //    public String url = "https://qa.koel.app/";
     public String url;
+    WebDriverWait wait;
 
     @BeforeSuite
     static void setupClass() {
@@ -32,7 +35,9 @@ public class BaseTest {
         options.addArguments("--start-maximized");
         url=baseURL;
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //instantiate Explicit wait
+        wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+
     }
 
     @AfterMethod
@@ -45,33 +50,31 @@ public class BaseTest {
     }
 
     public void provideEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys(email);
+        enterText(By.cssSelector("input[type='email']"),email);
     }
 
     public void providePassword(String password) {
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys(password);
+        enterText(By.cssSelector("input[type='password']"),password);
     }
 
     public void clickSubmit() {
-        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-        submit.click();
+        clickOnElement(By.cssSelector("button[type='submit']"));
     }
-    @DataProvider(name ="IncorrectLoginData")
-    public static Object[][] getDataFromDataProviders() {
-        return new Object[][]{
-                {"notExisting@email.com", "notExistingPassword"},
-                {"demo@class.com", ""},
-                {"", ""}
-        };
+
+    protected void loginCorrectCred() {
+        navigateToPage();
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
     }
-    @DataProvider(name = "csvData")
-    public Object[][] csvDataRead() throws Exception {
-        String path ="src/test/resources/cred.csv";
-        ExtUtils ext = new CSVUtils(path,false);
-        return ext.parseData();
+
+    void clickOnElement(By locator){
+        WebElement el= wait.until(ExpectedConditions.elementToBeClickable(locator));
+        el.click();
+    }
+    void enterText(By locator, String text){
+        WebElement el= wait.until(ExpectedConditions.elementToBeClickable(locator));
+        el.click();
+        el.clear();
+        el.sendKeys(text);
     }
 }
