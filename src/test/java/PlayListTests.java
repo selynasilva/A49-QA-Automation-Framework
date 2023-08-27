@@ -22,13 +22,13 @@ public class PlayListTests extends BaseTest {
         enterNewPlaylistName(playListName);
         checkShowSuccess();
     }
-//    @Test(priority = 2)
-//    public void renamePlaylist()  {
-//        doubleClickOnPlaylist(playListName);
-//        playListName ="Updated"+ playListName;
-//        enterNewPlaylistName(playListName);
-//        checkMessage();
-//    }
+    @Test(priority = 2)
+    public void renamePlaylist()  {
+        doubleClickOnPlaylist(playListName);
+        playListName ="Updated"+ playListName;
+        enterNewPlaylistName(playListName);
+        checkMessage();
+    }
 
     @Test(priority = 3)
     public void deletePlaylist()  {
@@ -53,7 +53,9 @@ public class PlayListTests extends BaseTest {
         WebElement playlistInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
 //       clear() does not work, element has an attribute of "required"
 //       workaround is ctrl A (to select all) then backspace to clear then replace with new playlist name
-        playlistInputField.sendKeys(Keys.chord(Keys.CONTROL,"A", Keys.BACK_SPACE));
+//        playlistInputField.sendKeys(Keys.chord(Keys.CONTROL,"A", Keys.BACK_SPACE));
+        //FOR MAC
+        playlistInputField.sendKeys(Keys.chord(Keys.COMMAND,"A", Keys.BACK_SPACE));
         playlistInputField.sendKeys(newPlayListName);
         playlistInputField.sendKeys(Keys.ENTER);
     }
