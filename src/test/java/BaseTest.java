@@ -27,7 +27,7 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
     }
 
-    @BeforeMethod
+    @BeforeClass
     @Parameters({"BaseURL"})
     public void launchBrowser(String baseURL) {
         //Added ChromeOptions argument below to fix websocket error
@@ -43,7 +43,7 @@ public class BaseTest {
 
     }
 
-    @AfterMethod
+    @AfterClass
     public void closeBrowser() {
         driver.quit();
     }

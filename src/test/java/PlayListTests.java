@@ -5,18 +5,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class PlayListTests extends BaseTest {
-    String playListName ="NataliasPlaylist"+generateRandomName();
+    String playListName ;
     @BeforeClass
-    void loginAndCreatePlayList(){
+    void login(){
         loginCorrectCred();
+        playListName ="NataliasPlaylist"+generateRandomName();
     }
     @Test(priority = 1)
     public void createPlaylist()  {
-        clickOnPlaylist(playListName);
-        clickCreatePlayList(playListName);
+        clickOnCreatePlaylistBtn();
+        clickOnCreateNewPlaylist();
+        enterNewPlaylistName(playListName);
         checkShowSuccess();
     }
     @Test(priority = 2)
@@ -32,13 +35,6 @@ public class PlayListTests extends BaseTest {
         clickOnPlaylist(playListName);
         clickOnDeletePlaylistBtn();
         checkShowSuccess();
-    }
-
-    private void clickCreatePlayList(String newPlayListName) {
-       clickOnCreatePlaylistBtn();
-       clickOnCreateNewPlaylist();
-       enterNewPlaylistName(newPlayListName);
-
     }
 
     private void clickOnCreateNewPlaylist() {
