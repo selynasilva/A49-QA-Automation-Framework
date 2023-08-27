@@ -23,11 +23,10 @@ public class PlayListTests extends BaseTest {
         checkShowSuccess();
     }
     @Test(priority = 2)
-    public void renamePlaylist() throws InterruptedException {
+    public void renamePlaylist()  {
         doubleClickOnPlaylist(playListName);
         playListName ="Updated"+ playListName;
         enterNewPlaylistName(playListName);
-        Thread.sleep(3000);
         checkMessage();
     }
 
