@@ -3,12 +3,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class PlayListTests extends BaseTest {
     String playListName ="NataliasPlaylist"+generateRandomName();
-    @BeforeMethod
+    @BeforeClass
     void loginAndCreatePlayList(){
         loginCorrectCred();
     }
