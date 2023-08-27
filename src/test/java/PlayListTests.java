@@ -62,7 +62,7 @@ public class PlayListTests extends BaseTest {
 
     private void clickOnDeletePlaylistBtn() {
         WebElement deletePlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".del.btn-delete-playlist")));
-        deletePlaylistBtn.click();
+        actions.click(deletePlaylistBtn).perform();
     }
 
     private void clickOnPlaylist() {
