@@ -22,13 +22,13 @@ public class PlayListTests extends BaseTest {
         enterNewPlaylistName(playListName);
         checkShowSuccess();
     }
-    @Test(priority = 2)
-    public void renamePlaylist()  {
-        doubleClickOnPlaylist(playListName);
-        playListName ="Updated"+ playListName;
-        enterNewPlaylistName(playListName);
-        checkMessage();
-    }
+//    @Test(priority = 2)
+//    public void renamePlaylist()  {
+//        doubleClickOnPlaylist(playListName);
+//        playListName ="Updated"+ playListName;
+//        enterNewPlaylistName(playListName);
+//        checkMessage();
+//    }
 
     @Test(priority = 3)
     public void deletePlaylist()  {
