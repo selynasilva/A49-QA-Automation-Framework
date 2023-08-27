@@ -23,10 +23,11 @@ public class PlayListTests extends BaseTest {
         checkShowSuccess();
     }
     @Test(priority = 2)
-    public void renamePlaylist()  {
+    public void renamePlaylist() throws InterruptedException {
         doubleClickOnPlaylist(playListName);
         playListName ="Updated"+ playListName;
         enterNewPlaylistName(playListName);
+        Thread.sleep(3000);
         checkMessage();
     }
 
@@ -61,7 +62,7 @@ public class PlayListTests extends BaseTest {
     }
 
     private void clickOnDeletePlaylistBtn() {
-        WebElement deletePlaylistBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".del.btn-delete-playlist")));
+        WebElement deletePlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".del.btn-delete-playlist")));
         deletePlaylistBtn.click();
     }
 
@@ -79,7 +80,7 @@ public class PlayListTests extends BaseTest {
     }
 
     private void checkMessage() {
-        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Updated playlist')]")));
         Assert.assertEquals("Updated playlist \""+playListName+".\"",notification.getText());
     }
 
