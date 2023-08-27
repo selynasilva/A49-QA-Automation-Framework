@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 public class BaseTest {
     public WebDriver driver = null;
+    public static Actions actions = null;
 //    public String url = "https://qa.koel.app/";
     public String url;
     WebDriverWait wait;
@@ -37,6 +39,7 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         //instantiate Explicit wait
         wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        actions = new Actions(driver);
 
     }
 
@@ -58,13 +61,17 @@ public class BaseTest {
     }
 
     public void clickSubmit() {
-        clickOnElement(By.cssSelector("button[type='submit']"));
+        clickOnElement(By.cssSelector("[type='submit']"));
     }
 
+    public String generateRandomName() {
+        return UUID.randomUUID().toString().replace("-", "");
+    }
     protected void loginCorrectCred() {
         navigateToPage();
         provideEmail("demo@class.com");
         providePassword("te$t$tudent");
+        clickSubmit();
     }
 
     void clickOnElement(By locator){
@@ -76,5 +83,15 @@ public class BaseTest {
         el.click();
         el.clear();
         el.sendKeys(text);
+    }
+
+    private void clickOnOk() {
+        WebElement okBtn = driver.findElement(By.cssSelector(".ok"));
+        okBtn.click();
+    }
+
+    protected void checkShowSuccess() {
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+       Assert.assertTrue(notification.isDisplayed());
     }
 }
