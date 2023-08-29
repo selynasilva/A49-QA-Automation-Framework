@@ -94,4 +94,8 @@ public class BaseTest {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
        Assert.assertTrue(notification.isDisplayed());
     }
+
+    protected void clickOnPlaylist(String playlistName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
+    }
 }

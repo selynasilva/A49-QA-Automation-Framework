@@ -4,8 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class PlayListTests extends BaseTest {
@@ -70,9 +68,6 @@ public class PlayListTests extends BaseTest {
         playlist.click();
     }
 
-    private void clickOnPlaylist(String playlistName) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
-    }
     private void doubleClickOnPlaylist(String playlistName) {
         WebElement playlistElement =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + playlistName + "')]")));
         actions.doubleClick(playlistElement).perform();
