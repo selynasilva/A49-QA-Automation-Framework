@@ -17,7 +17,6 @@ public class ActionsTest extends BaseTest {
         checkSongIsPlaying();
     }
 
-
     @Test
     void mouseHoverTest() throws InterruptedException {
         loginCorrectCred();
@@ -72,9 +71,4 @@ public class ActionsTest extends BaseTest {
     private void clickAllSongs() {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li a.songs"))).click();
     }
-
-//    Locators
-    //css all songs li a.songs --.menu .songs
-    //xpath  //section[@id='songsWrapper']//td[text()='Reactor']
-    //css .playback
 }
