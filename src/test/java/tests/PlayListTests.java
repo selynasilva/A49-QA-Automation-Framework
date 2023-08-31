@@ -2,11 +2,17 @@ package tests;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.PlaylistPage;
 
 public class PlayListTests extends BaseTest {
+    LoginPage loginPage;
+    PlaylistPage playlistPage;
     public String playListName ;
     @BeforeClass
     void login(){
+        loginPage = new LoginPage(driver);
+        playlistPage = new PlaylistPage(driver);
         loginPage.loginCorrectCred();
         playListName ="NataliasPlaylist"+basePage.generateRandomName();
     }

@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver, WebDriverWait wait, Actions actions) {
-        super(driver, wait, actions);
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
     public void loginCorrectCred() {
         provideEmail("demo@class.com");

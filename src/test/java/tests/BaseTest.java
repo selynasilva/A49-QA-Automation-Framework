@@ -23,13 +23,8 @@ import java.util.UUID;
 
 public class BaseTest {
     public WebDriver driver ;
-    public static Actions actions ;
     public String url = "https://qa.koel.app/";
-    public WebDriverWait wait;
     BasePage basePage;
-    LoginPage loginPage;
-    HomePage homePage;
-    PlaylistPage playlistPage;
 
     @BeforeSuite
     static void setupClass() {
@@ -45,13 +40,8 @@ public class BaseTest {
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         //instantiate Explicit wait
-        wait = new WebDriverWait(driver,Duration.ofSeconds(20));
-        actions = new Actions(driver);
-        basePage = new BasePage(driver, wait,actions);
+        basePage = new BasePage(driver);
         basePage.navigateToPage(url);
-        loginPage = new LoginPage(driver,wait, actions);
-        homePage = new HomePage(driver, wait, actions);
-        playlistPage = new PlaylistPage(driver,wait,actions);
     }
 
     @AfterClass

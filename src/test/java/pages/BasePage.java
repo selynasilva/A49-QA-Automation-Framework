@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.UUID;
 
 public class BasePage {
@@ -15,10 +16,10 @@ public class BasePage {
     WebDriverWait wait;
     Actions actions;
 
-    public BasePage(WebDriver driver, WebDriverWait wait, Actions actions){
+    public BasePage(WebDriver driver){
         this.driver = driver;
-        this.wait = wait;
-        this.actions = actions;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        actions = new Actions(driver);
     }
     public void navigateToPage(String url) {
         driver.get(url);

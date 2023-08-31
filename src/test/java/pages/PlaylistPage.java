@@ -12,8 +12,9 @@ import org.testng.Assert;
 import java.util.List;
 
 public class PlaylistPage extends BasePage{
-    public PlaylistPage(WebDriver driver, WebDriverWait wait, Actions actions) {
-        super(driver, wait, actions);
+
+    public PlaylistPage(WebDriver driver) {
+        super(driver);
     }
     public void checkNumberOfSongsInPlaylist() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".song-list-wrap.main-scroll-wrap.playlist td.title")));

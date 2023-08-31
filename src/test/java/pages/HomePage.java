@@ -9,9 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class HomePage extends BasePage {
-    public HomePage(WebDriver driver, WebDriverWait wait, Actions actions) {
-        super(driver, wait, actions);
+    public HomePage(WebDriver driver) {
+        super(driver);
     }
+//    public HomePage(WebDriver driver) {
+//        super(driver);
+//    }
 
     public void clickOnPlaylist(String playlistName) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
