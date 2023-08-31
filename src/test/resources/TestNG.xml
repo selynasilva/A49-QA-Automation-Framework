@@ -5,8 +5,8 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="PlayListTests"/>
-            <class name="ActionsTest"/>
+            <class name="tests.ActionsTest"/>
+            <class name="tests.PlayListTests"/>
         </classes>
     </test>
 </suite>
