@@ -18,23 +18,23 @@ public class PlayListTests extends BaseTest {
     }
     @Test(priority = 1)
     public void createPlaylist()  {
-        playlistPage.clickOnCreatePlaylistBtn();
-        playlistPage.clickOnCreateNewPlaylist();
-        playlistPage.enterNewPlaylistName(playListName);
+        playlistPage.clickOnCreatePlaylistBtn()
+                    .clickOnCreateNewPlaylist()
+                    .enterNewPlaylistName(playListName);
         basePage.checkShowSuccess();
     }
     @Test(priority = 2)
     public void renamePlaylist()  {
         playlistPage.doubleClickOnPlaylist(playListName);
         playListName ="Updated"+ playListName;
-        playlistPage.enterNewPlaylistName(playListName);
-        playlistPage.checkMessage(playListName);
+        playlistPage.enterNewPlaylistName(playListName)
+                    .checkMessage(playListName);
     }
 
     @Test(priority = 3)
     public void deletePlaylist()  {
-        playlistPage.clickOnPlaylist(playListName);
-        playlistPage.clickOnDeletePlaylistBtn();
+        playlistPage.clickOnPlaylist(playListName)
+                    .clickOnDeletePlaylistBtn();
         basePage.checkShowSuccess();
     }
 
