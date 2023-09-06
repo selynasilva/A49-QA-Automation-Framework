@@ -30,7 +30,7 @@ public class BaseTest {
     }
     WebDriver setupBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
-        //To start the grid server run this in command line (go to download locations first)
+        //To start the grid server run this command below in command line (go to download location first)
         //java -jar selenium-server-4.12.0.jar standalone --selenium-manager true
         String gridURL = "http://192.168.1.105:4444";
         switch(browser) {
