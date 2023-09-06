@@ -8,15 +8,15 @@ public class LoginTests extends BaseTest{
     LoginPage loginPage;
     @BeforeMethod
     void setup(){
-       loginPage= new LoginPage(getThreadDriver());
-       getThreadDriver().get(url);
+        loginPage = new LoginPage(driver);
+        driver.get(url);
     }
     @Test
-    public void validPassword() throws InterruptedException {
+    public void validLogin(){
         loginPage.loginCorrectCred();
     }
     @Test
-    public void validLoginPassword(){
+    public void validLoginOnceLoggedIn(){
         loginPage.loginCorrectCred();
     }
 }
