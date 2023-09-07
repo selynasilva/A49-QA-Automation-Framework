@@ -19,7 +19,7 @@ public class BaseTest {
     public String url = "https://qa.koel.app/";
 
 
-    @BeforeSuite
+    @BeforeClass
     public void setupSuit() throws MalformedURLException {
         String browser = System.getProperty("browser");
         driver=setupBrowser(browser);
