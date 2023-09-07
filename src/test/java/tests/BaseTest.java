@@ -20,7 +20,7 @@ public class BaseTest {
 
 
     @BeforeClass
-    public void setupSuit() throws MalformedURLException {
+    public void setupClass() throws MalformedURLException {
         String browser = System.getProperty("browser");
         driver=setupBrowser(browser);
     }
