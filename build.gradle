@@ -11,13 +11,35 @@ repositories {
 
 dependencies {
     testImplementation 'org.testng:testng:7.6.1'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.12.1'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
+    implementation 'io.cucumber:cucumber-testng:7.9.0'
+    implementation 'io.cucumber:cucumber-core:7.9.0'
+    implementation 'io.cucumber:cucumber-java:7.9.0'
+    implementation 'io.cucumber:gherkin:25.0.2'
 }
 
 test {
     useTestNG() {
         suites "src/test/resources/TestNG.xml"
-        systemProperty "browser", System.getProperty("browser")
+    }
+    }
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:target/cucumber-report.html',
+                    '--glue', 'stepDefinition',
+                    'src/test/resources']
+        }
     }
 }
